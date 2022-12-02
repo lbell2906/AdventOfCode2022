@@ -7,10 +7,10 @@ class Day1 extends Day {
         super(1);
     }
 
-    splitByBlankLine = (input: string) => input.split('\n')
-    addCalories = (caloriesArray: Array<number>) => caloriesArray.reduce((a , b) => a + b, 0)
+    splitByBlankLine = (input: string) : Array<string> => input.split('\n')
+    addCalories = (caloriesArray: Array<number>): number => caloriesArray.reduce((a , b) => a + b, 0)
 
-    groupAndCummulateCalories = (calorieArray : Array<string>) => {
+    groupAndCummulateCalories = (calorieArray : Array<string>) : Array<number> => {
         const elfTotalArrays: Array<number> = []
         let newElfEntry: Array<number> = []
         calorieArray.forEach((calorieEntry) => {
