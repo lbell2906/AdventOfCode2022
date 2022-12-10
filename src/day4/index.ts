@@ -52,9 +52,6 @@ class Day4 extends Day {
         return resultsCount.toString()
     }
 
-    // '. . . . . . . - - . .'
-    // '. - -  . . . . . . . .'
-
     solveForPartTwo(input: string): string {
         let data: Array<boolean> = this.splitByLine(input).map((pair) => {
             const [elf1, elf2]  = pair.split(',')
