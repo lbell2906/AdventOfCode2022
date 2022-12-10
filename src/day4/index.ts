@@ -52,8 +52,20 @@ class Day4 extends Day {
         return resultsCount.toString()
     }
 
+    // '. . . . . . . - - . .'
+    // '. - -  . . . . . . . .'
+
     solveForPartTwo(input: string): string {
-        return input;
+        let data: Array<boolean> = this.splitByLine(input).map((pair) => {
+            const [elf1, elf2]  = pair.split(',')
+            const elf1Range = this.numbersInRange([...(elf1.split('-').map((number) => parseInt(number)))])
+            const elf2Range = this.numbersInRange([...(elf2.split('-').map((number) => parseInt(number)))])
+            const maxInPair = Math.max( ...[...elf1Range, ...elf2Range])
+            const formattedRange = [this.formattedRange(maxInPair, elf1Range), this.formattedRange(maxInPair, elf2Range)]
+          return formattedRange[0].split('').some((character, index) =>  character === '-' ? character === formattedRange[1][index] : false)
+        })
+        return data.filter((value) => value === true).length.toString();
+
     }
 }
 
