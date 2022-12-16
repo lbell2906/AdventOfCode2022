@@ -23,7 +23,20 @@ class Day6 extends Day {
     }
 
     solveForPartTwo(input: string): string {
-        return input;
+        const signalArray: Array<string> = input.split('')
+        const startingMarkersIndicies: Array<number> = []
+        signalArray.forEach((character, index) => {
+        if (index > 13) {
+            const packet = signalArray.slice(index - 13, index +1)
+            const occurrences = packet.reduce(function (acc: {[key: string]: number}, curr: string) {
+                return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+              }, {});
+            if (Object.values(occurrences).every((value) => value === 1)) {
+                startingMarkersIndicies.push(index)
+            }
+        }
+        })
+        return (startingMarkersIndicies[0] + 1).toString();
     }
 }
 
